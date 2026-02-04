@@ -10,11 +10,13 @@ A stunning, futuristic space-themed webpage that tracks astronaut visits to the 
 ## 🌟 Features
 
 ### 🎯 Core Functionality
-- **Persistent Visitor Counter**: Uses `localStorage` to track astronaut check-ins across sessions
-- **Automatic Increment**: Counter increases by 1 on each page visit
+- **🌍 Global Shared Visitor Counter**: Uses free CountAPI service to track visits across ALL users worldwide
+- **Real-time Synchronization**: Counter is shared globally - every visitor sees the same total count
+- **Automatic Increment**: Counter increases by 1 on each page visit from any user
 - **Smooth Animations**: Elegant counter transitions with easing effects
 - **Visual Feedback**: Animated "+1" popup when counter increments
 - **Real-time Clock**: Live mission time display
+- **Fallback System**: Automatically switches to localStorage if API is unavailable
 
 ### 🎨 Visual Design
 - **Animated Star Field**: Three-layer parallax starscape
@@ -36,26 +38,28 @@ A stunning, futuristic space-themed webpage that tracks astronaut visits to the 
 ### 🛠️ Developer Tools
 Open browser console for:
 - `getVisitorCount()` - View current count
-- `resetVisitorCount()` - Reset counter to zero
-- `Ctrl+Shift+R` - Quick reset shortcut
+- `await getCurrentCount()` - Fetch latest count from API
+- `resetVisitorCount()` - Info about counter (cannot reset global count)
+- `Ctrl+Shift+R` - Quick reset attempt (will show info)
 - `Ctrl+Shift+I` - Display system information
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Any modern web browser (Chrome, Firefox, Safari, Edge)
+- Internet connection (for global counter API)
 - No server or build process required!
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/space_exploration_mission.git
+   git clone https://github.com/Eswar-git1/Space_exploration_mission.git
    ```
 
 2. **Navigate to the project folder**
    ```bash
-   cd space_exploration_mission
+   cd Space_exploration_mission
    ```
 
 3. **Open in browser**
@@ -79,23 +83,31 @@ Open browser console for:
 space_exploration_mission/
 ├── index.html          # Main HTML structure
 ├── styles.css          # Complete styling and animations
-├── script.js           # Visitor counter logic and interactions
+├── script.js           # Global visitor counter logic with API integration
 └── README.md           # Project documentation
 ```
 
-## 💾 Data Persistence
+## 💾 Data Persistence & Global Counter
 
-The visitor counter uses **localStorage**, which means:
-- ✅ Count persists across browser sessions
-- ✅ No backend or database required
-- ⚠️ Each browser has its own separate count
-- ⚠️ Count is not shared across different users/devices
+### How It Works
+The visitor counter uses **[CountAPI.xyz](https://countapi.xyz/)**, a free API service that provides:
+- ✅ **Global counter** shared across ALL users worldwide
+- ✅ **Real-time updates** - every visitor sees the true total count
+- ✅ **Persistent storage** - count never resets
+- ✅ **No backend required** - completely free API service
+- ✅ **Automatic fallback** - uses localStorage if API is unavailable
 
-### Upgrading to Global Counter
-For a truly shared visitor count across all users, you would need:
-- Backend server (Node.js, Python, PHP, etc.)
-- Database (MongoDB, PostgreSQL, Firebase, Supabase, etc.)
-- API endpoints for read/write operations
+### API Details
+- **Endpoint**: `https://api.countapi.xyz/hit/space-mission-control-eswar/visits`
+- **Namespace**: `space-mission-control-eswar`
+- **Key**: `visits`
+- **Type**: Hit counter (increments on each visit)
+
+### Privacy & Security
+- No personal data is collected
+- Only increments a simple numeric counter
+- No tracking or analytics beyond the visit count
+- Open-source and transparent implementation
 
 ## 🎨 Design System
 
